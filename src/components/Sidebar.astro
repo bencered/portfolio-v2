@@ -24,14 +24,13 @@ function isActive(href: string): boolean {
 
 <div class="sidebar-identity">
   <h1>
-    <span class="sketchy-underline">Bence</span> R.
+    <span class="sketchy-underline">Bence R.</span>
   </h1>
   <p class="subtitle">
     Developer &amp; student. <Age /> yrs old.
   </p>
   <p class="bio">
-    First-year Immersive Software Engineering student in Limerick, Ireland.
-    Building for the web since 2023.
+    First-year ISE student in Limerick, Ireland. Programming since 11, building for the web since 2023.
   </p>
 </div>
 
@@ -50,12 +49,7 @@ function isActive(href: string): boolean {
 <div class="sidebar-footer">
   <div class="sidebar-footer-links">
     {socials.map((s) => (
-      <a
-        href={s.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
+      <a href={s.href} target="_blank" rel="noopener noreferrer" class="social-link">
         {s.label}
         <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
           <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

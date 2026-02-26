@@ -115,17 +115,19 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
 .sidebar {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
   padding: 5rem 0;
   position: sticky;
   top: 0;
   height: 100vh;
   overflow: hidden;
+  gap: 0;
 }
 
 @media (min-width: 1024px) {
   .sidebar { display: flex; width: 50%; }
 }
+
+/* (footer anchored via margin-top: auto in sidebar-footer below) */
 
 /* Right main: scrollable by default */
 .main-col {
@@ -171,15 +173,16 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
 }
 
 .sidebar-identity .bio {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
   max-width: 22rem;
+  margin-top: 0.5rem;
 }
 
 /* Nav links with extending line (original animation) */
 .sidebar-nav {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -230,6 +233,7 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-top: auto;
 }
 
 .sidebar-footer-links {
@@ -288,7 +292,7 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
    Main content sections
    ========================================================= */
 .section {
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .section p {

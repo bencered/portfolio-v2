@@ -1,30 +1,18 @@
-<span id="asdf" class="font-bold">
-    19.000000000
-    <script>
-        function updateAge() {
-            let ageEl = document.querySelector("#asdf");
-            if (!ageEl) return;
-            
-            const interval = setInterval(() => {
-                const birthTimestamp = 1142467200000;
-                const currentTimestamp = Date.now();
-                const millisecondsPerYear = 31557600000;
-                const yearsElapsed = (currentTimestamp - birthTimestamp) / millisecondsPerYear;
-                const formattedAge = yearsElapsed.toFixed(12).slice(0, 12);
-                ageEl.innerText = formattedAge;
-            }, 30);
-            
-            // Return cleanup function to avoid memory leaks
-            return () => clearInterval(interval);
-        }
-        
-        // Initialize on page load
-        let cleanup = updateAge();
-        
-        // Re-initialize on page transitions
-        document.addEventListener('astro:page-load', () => {
-            if (cleanup) cleanup();
-            cleanup = updateAge();
-        });
-    </script>
-</span>
+<span id="age-counter">19.00</span>
+<script>
+    function updateAge() {
+        const el = document.querySelector("#age-counter");
+        if (!el) return;
+        const interval = setInterval(() => {
+            const born = 1142467200000;
+            const age = (Date.now() - born) / 31557600000;
+            el.textContent = age.toFixed(2);
+        }, 100);
+        return () => clearInterval(interval);
+    }
+    let cleanup = updateAge();
+    document.addEventListener('astro:page-load', () => {
+        if (cleanup) cleanup();
+        cleanup = updateAge();
+    });
+</script>
