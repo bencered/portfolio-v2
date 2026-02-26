@@ -1,6 +1,7 @@
 ---
 import "../styles/globals.css"
 import SideNav from "../components/SideNav.astro"
+import MobileNav from "../components/MobileNav.astro"
 import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro'
 
@@ -12,7 +13,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,16 +23,12 @@ const { title } = Astro.props;
         <script defer src="https://umami.bence.red/script.js" data-website-id="e632ac30-04d3-42b5-9d01-8481db69b9a1"></script>
         <ClientRouter />
     </head>
-
     <body>
         <Analytics />
-
+        <MobileNav />
         <SideNav />
-
-        <main class="md:ml-[180px] pt-11 md:pt-0 min-h-screen">
-            <div class="max-w-[700px] mx-auto px-10 py-14">
-                <slot />
-            </div>
+        <main class="main-content">
+            <slot />
         </main>
     </body>
 </html>

@@ -2,12 +2,8 @@
 import BlogItem from "./BlogItem.astro";
 import { getCollection } from "astro:content";
 
-let allPosts = await getCollection("ramblings")
+const allPosts = await getCollection("ramblings");
+const sorted = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 ---
 
-<section id="writing" class="mb-14 scroll-mt-8">
-  <h2 class="text-[11px] uppercase tracking-widest text-[#aaa] font-medium mb-6">Writing</h2>
-  <div class="flex flex-col">
-    {allPosts.map((post) => <BlogItem post={post} />)}
-  </div>
-</section>
+{sorted.map((post) => <BlogItem post={post} />)}

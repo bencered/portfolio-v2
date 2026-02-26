@@ -10,30 +10,31 @@ const quotes = [
     ["The trick to happiness wasn't in freezing every momentary pleasure and clinging to each one, but in ensuring one's life would produce many future moments to anticipate.", "Brandon Sanderson"],
     ["If I must fall, I will rise each time a better man.", "Dalinar Kholin"],
     ["Your real ability only consists of what you can actually do when it counts.", "Blue Lock"],
-    ["I had dreamed of this moment since I was a boy, since I'd learned that Delos was not the world but a planet island in it.", "Hadrian Marlowe"],
     ["When my bird was looking at my computer monitor, I thought, 'Woah, that bird has no idea what he's looking at.' And yet what does the bird do? Does he panic? No, he can't really panic, he just does the best he can. Is he able to live in a world where he's so ignorant? Well, he doesn't really have a choice. The bird is okay even though he doesn't understand the world. You're that bird looking at the monitor, and you're thinking to yourself, I can figure this out. Maybe you have some bird ideas. Maybe that's the best you can do.", "Terry Davis"],
     ["The longer you live, the more you fail. Failure is the mark of a life well lived. In turn, the only way to live without failure is to be of no use to anyone. Trust me, I've practiced.", "Wit"],
     ["The most important step a man can take. It's not the first one, is it? It's the next one. Always the next step, Dalinar.", "Dalinar Kholin"],
-    ["And so, does the destination matter? Or is it the path we take? I declare that no accomplishment has substance nearly as great as the road used to achieve it. We are not creatures of destinations. It is the journey that shapes us. Our callused feet, our backs strong from carrying the weight of our travels, our eyes open with the fresh delight of experiences lived.", "Brandon Sanderson"],
+    ["And so, does the destination matter? Or is it the path we take? I declare that no accomplishment has substance nearly as great as the road used to achieve it. We are not creatures of destinations. It is the journey that shapes us.", "Brandon Sanderson"],
     ["My memory is to the world as a drawing is to the photograph. Imperfect. More perfect. We remember what we must, what we choose to, because it is more beautiful and real than the truth.", "Hadrian Marlowe"],
-    ["The artist sees things not in terms of what is or might be, but in terms of what must be. Of what our world must become. This is why a portrait will—to the human observer—always defeat the photograph", "Hadrian Marlowe"],
+    ["The artist sees things not in terms of what is or might be, but in terms of what must be. Of what our world must become. This is why a portrait will—to the human observer—always defeat the photograph.", "Hadrian Marlowe"],
 ];
 ---
 
 <Layout title="Quotes — Bence R.">
-  <header class="mb-10">
-    <h1 class="text-[2rem] font-bold text-[#111] mb-2">Favourite Quotes</h1>
-    <p class="text-[15px] text-[#666]">Things that have stuck with me.</p>
-  </header>
+  <article class="article">
+    <header>
+      <h1 style="font-size:1.75rem; line-height:1.2; margin-bottom:0.5rem;">Favourite Quotes</h1>
+      <p class="tagline">Things that have stuck with me.</p>
+    </header>
 
-  <ul class="flex flex-col">
-    {quotes.map((quote) => (
-      <li class="py-6 border-b border-[rgba(0,0,0,0.07)] last:border-0">
-        <blockquote class="font-mono text-[13px] text-[#555] leading-relaxed italic mb-2">
-          "{quote[0]}"
-        </blockquote>
-        <p class="text-[12px] text-[#aaa]">— {quote[1]}</p>
-      </li>
-    ))}
-  </ul>
+    <section>
+      {quotes.map((quote) => (
+        <div style="padding: 0.875rem 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(0,0,0,0.55); line-height:1.55; font-style:italic; margin-bottom:0.5rem;">
+            "{quote[0]}"
+          </p>
+          <p style="font-size:0.6875rem; color:rgba(0,0,0,0.35);">— {quote[1]}</p>
+        </div>
+      ))}
+    </section>
+  </article>
 </Layout>

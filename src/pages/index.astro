@@ -1,16 +1,158 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Profile from "../components/profile/Profile.astro";
 import Quote from "../components/content/quote";
-import PersonalDescription from "../components/content/PersonalDescription.astro";
-import ProjectList from "../components/content/ProjectList.astro";
 import BlogList from "../components/blog/BlogList.astro";
+import Age from "../components/profile/Age.astro";
+
+const projects = [
+  {
+    name: "BetterExams.ie",
+    description: "Alternative to examinations.ie — easy access to past papers and resources without the 2006-era form system.",
+    href: "/projects/betterexams",
+    image: "/betterexams.png",
+    tags: ["Next.js", "React", "TypeScript"],
+    featured: true,
+  },
+  {
+    name: "BetterExams Points",
+    description: "Grades tracker for Leaving Cert students. Auto-calculates total CAO points and tracks past results.",
+    href: "/projects/betterexams-points",
+    image: "/bep_home.webp",
+    tags: ["React", "Tailwind CSS"],
+  },
+  {
+    name: "Why Vim?",
+    description: "Whitepaper-style site to familiarise people with Vim motions.",
+    href: "/projects/why-vim",
+    image: "/why-vim.png",
+    tags: ["Next.js", "React", "TypeScript"],
+    featured: true,
+  },
+  {
+    name: "Modern ISE Website",
+    description: "A weekend exercise in stepping outside my design comfort zone — radical redesign of software-engineering.ie.",
+    href: "/projects/modern-ise-website",
+    image: "/modern-ise-website.png",
+    tags: ["Next.js", "Tailwind CSS", "Turso"],
+  },
+  {
+    name: "QuoteBoat",
+    description: "Platform for ISE students to record funny, insightful, or stupid things their friends said.",
+    href: "/projects/quoteboat",
+    image: "/quoteboat.png",
+    tags: ["Next.js", "Tailwind CSS", "Turso"],
+  },
+];
 ---
 
 <Layout title="Bence R.">
-    <Profile />
-    <Quote client:load />
-    <PersonalDescription />
-    <ProjectList />
-    <BlogList />
+  <article class="article">
+
+    <!-- Announcement banner -->
+    <a href="https://github.com/bencered" target="_blank" class="announcement-banner">
+      <span class="pulse-dot"></span>
+      <span>Second-year ISE student · Limerick, Ireland</span>
+      <span style="color:#4a9eff; margin-left:0.5rem">→</span>
+    </a>
+
+    <!-- Hero header -->
+    <header>
+      <!-- GitHub snippet, floats top-right -->
+      <button
+        class="install-snippet"
+        id="copy-btn"
+        title="Copy"
+      >
+        <code>github.com/bencered</code>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" id="copy-icon">
+          <path d="M4.75 11.25C4.75 10.4216 5.42157 9.75 6.25 9.75H12.75C13.5784 9.75 14.25 10.4216 14.25 11.25V17.75C14.25 18.5784 13.5784 19.25 12.75 19.25H6.25C5.42157 19.25 4.75 18.5784 4.75 17.75V11.25Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M17.25 14.25H17.75C18.5784 14.25 19.25 13.5784 19.25 12.75V6.25C19.25 5.42157 18.5784 4.75 17.75 4.75H11.25C10.4216 4.75 9.75 5.42157 9.75 6.25V6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <h1 style="font-size:2rem; line-height:1.15; margin-bottom:0.5rem;">
+        <span class="sketchy-underline">Bence Redmond.</span><br />
+        I build things for the <span class="pen-underline">web.</span>
+      </h1>
+      <p class="tagline">
+        First-year Immersive Software Engineering student in Limerick.
+        Programming since age 11 — <Age /> years old.
+      </p>
+    </header>
+
+    <!-- About -->
+    <section>
+      <p>
+        I've been programming since I was 11, but only seriously got into web dev around
+        summer 2023 with <a href="https://betterexams.ie" target="_blank">BetterExams.ie</a>.
+        Outside of dev: reading, design, oxford commas. Big
+        <a href="https://hardcover.app/books/the-way-of-kings" target="_blank">Brandon Sanderson</a>
+        fan. Also into
+        <a href="https://mangadex.org/title/e5357466-c8a2-4259-9b02-2580185bd2bb/billy-bat" target="_blank">Billy Bat</a>
+        and <a href="https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg" target="_blank">Kendrick Lamar</a>.
+      </p>
+    </section>
+
+    <!-- Quote -->
+    <section>
+      <Quote client:load />
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        {projects.map((p) => (
+          <a href={p.href} class="project-card">
+            <img src={p.image} alt={p.name} class="project-card-img" loading="lazy" />
+            <div class="project-card-body">
+              <div class="project-card-title">
+                {p.name}
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {p.featured && <span class="project-featured-badge">Featured</span>}
+              </div>
+              <p class="project-card-desc">{p.description}</p>
+              <ul class="project-card-tags">
+                {p.tags.map((tag) => <li class="project-tag">{tag}</li>)}
+              </ul>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section>
+      <h2>Writing</h2>
+      <BlogList />
+    </section>
+
+    <!-- Footer links -->
+    <section class="quickstart-links">
+      <p><a href="/reading" class="styled-link">What I'm reading <span class="arrow">→</span></a></p>
+      <p><a href="/quotes" class="styled-link">Favourite quotes <span class="arrow">→</span></a></p>
+    </section>
+
+  </article>
+
+  <footer class="footer">
+    <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
+    ·
+    <a href="https://github.com/bencered/portfolio-v2" target="_blank" rel="noopener noreferrer">Source</a>
+  </footer>
 </Layout>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  btn?.addEventListener('click', async () => {
+    await navigator.clipboard.writeText('github.com/bencered');
+    const code = btn.querySelector('code');
+    if (code) {
+      const orig = code.textContent;
+      code.textContent = 'copied!';
+      setTimeout(() => { code.textContent = orig; }, 1500);
+    }
+  });
+</script>
