@@ -102,7 +102,7 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
 .layout {
   display: flex;
   min-height: 100vh;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -120,7 +120,7 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
 }
 
 @media (min-width: 1024px) {
-  .layout { gap: 1.5rem; padding: 0 96px; }
+  .layout { gap: 1.5rem; padding: 0 48px; }
 }
 
 /* Left sidebar: sticky, half width on desktop */
