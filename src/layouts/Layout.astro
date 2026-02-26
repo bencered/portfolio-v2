@@ -8,9 +8,14 @@ import Analytics from '@vercel/analytics/astro'
 interface Props {
     title: string;
     noScroll?: boolean;
+    ogDesc?: string;
 }
 
-const { title, noScroll = false } = Astro.props;
+const { title, noScroll = false, ogDesc } = Astro.props;
+const siteUrl = "https://bence.red";
+const ogTitle = title;
+const ogDescription = ogDesc ?? "Software engineering student & developer based in Limerick, Ireland.";
+const ogImage = `${siteUrl}/og.png?title=${encodeURIComponent(ogTitle)}&desc=${encodeURIComponent(ogDescription)}`;
 ---
 
 <!doctype html>
@@ -21,6 +26,20 @@ const { title, noScroll = false } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <meta name="description" content={ogDescription} />
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={ogDescription} />
+        <meta name="twitter:image" content={ogImage} />
         <script defer src="https://umami.bence.red/script.js" data-website-id="e632ac30-04d3-42b5-9d01-8481db69b9a1"></script>
         <ClientRouter />
     </head>
