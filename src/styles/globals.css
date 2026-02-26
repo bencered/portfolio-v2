@@ -159,7 +159,6 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
     padding: 5rem 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
 }
 
@@ -170,9 +169,10 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
   font-family: var(--font-title);
   font-size: 2.75rem;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text-strong);
+  margin-top: -4px;
   margin-bottom: 0.5rem;
 }
 
