@@ -1,5 +1,10 @@
 ---
-const { post } = Astro.props;
+interface Props {
+  post: any;
+  compact?: boolean;
+}
+
+const { post, compact = false } = Astro.props;
 const pData = post.data;
 const postLink = "/ramblings/" + pData.slug;
 const postDate = new Date(pData.pubDate);

@@ -4,108 +4,53 @@ import Quote from "../components/content/quote";
 import BlogList from "../components/blog/BlogList.astro";
 
 const projects = [
-  {
-    name: "BetterExams.ie",
-    description: "An alternative to the official examinations.ie. Easy access to past papers and resources without dealing with a form system from 2006.",
-    href: "/projects/betterexams",
-    image: "/betterexams.png",
-    tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    featured: true,
-  },
-  {
-    name: "BetterExams Points",
-    description: "A grades tracker for Leaving Cert students. Automatically calculates total CAO points and tracks past test results.",
-    href: "/projects/betterexams-points",
-    image: "/bep_home.webp",
-    tags: ["React", "Tailwind CSS"],
-  },
-  {
-    name: "Why Vim?",
-    description: "A whitepaper-style site to help people get familiar with Vim motions.",
-    href: "/projects/why-vim",
-    image: "/why-vim.png",
-    tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    featured: true,
-  },
-  {
-    name: "Modern ISE Website",
-    description: "A weekend exercise in stepping outside my design comfort zone — a radical redesign of software-engineering.ie.",
-    href: "/projects/modern-ise-website",
-    image: "/modern-ise-website.png",
-    tags: ["Next.js", "Tailwind CSS", "Turso", "Prisma"],
-  },
-  {
-    name: "QuoteBoat",
-    description: "A platform for ISE students to record the funny, insightful, or stupid things their friends said.",
-    href: "/projects/quoteboat",
-    image: "/quoteboat.png",
-    tags: ["Next.js", "Tailwind CSS", "Turso", "Prisma"],
-  },
+  { name: "BetterExams.ie",      href: "/projects/betterexams",      tags: ["Next.js", "TypeScript"],        featured: true },
+  { name: "BetterExams Points",  href: "/projects/betterexams-points",tags: ["React", "Tailwind CSS"] },
+  { name: "Why Vim?",            href: "/projects/why-vim",           tags: ["Next.js", "TypeScript"],        featured: true },
+  { name: "Modern ISE Website",  href: "/projects/modern-ise-website",tags: ["Next.js", "Turso"] },
+  { name: "QuoteBoat",           href: "/projects/quoteboat",         tags: ["Next.js", "Turso"] },
+  { name: "Portfolio",           href: "/projects/portfolio",         tags: ["Astro", "Tailwind CSS"] },
 ];
 ---
 
-<Layout title="Bence R.">
+<Layout title="Bence R." noScroll>
 
-  <!-- About section -->
-  <div class="section">
-    <a href="https://github.com/bencered" target="_blank" class="announcement-banner">
-      <span class="pulse-dot"></span>
-      Second-year ISE student · Limerick, Ireland
-      <span style="color: var(--accent);">→</span>
-    </a>
-
+  <!-- Quote (compact) -->
+  <div style="margin-bottom: 1.75rem;">
     <Quote client:load />
+  </div>
 
-    <p style="margin-top:1.25rem">
-      Hi, I'm Bence — I've been programming since I was 11, but only seriously
-      got into web development around summer 2023 with
-      <a href="https://betterexams.ie" target="_blank">BetterExams.ie</a>.
-    </p>
-    <p>
-      Outside of dev: reading, design, oxford commas. Big
-      <a href="https://hardcover.app/books/the-way-of-kings" target="_blank">Brandon Sanderson</a>
-      fan. Also into
-      <a href="https://mangadex.org/title/e5357466-c8a2-4259-9b02-2580185bd2bb/billy-bat" target="_blank">Billy Bat</a>
-      and
-      <a href="https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg" target="_blank">Kendrick Lamar</a>.
+  <!-- About (one paragraph) -->
+  <div style="margin-bottom: 2rem;">
+    <p style="font-size:0.875rem; color:var(--text); line-height:1.7;">
+      Hi, I'm Bence — I've been programming since I was 11, only seriously got into
+      web dev around 2023 with <a href="https://betterexams.ie" target="_blank" style="color:var(--accent)">BetterExams.ie</a>.
+      Outside of dev: reading, design, oxford commas.
+      Big <a href="https://hardcover.app/books/the-way-of-kings" target="_blank" style="color:var(--accent)">Brandon Sanderson</a> fan.
     </p>
   </div>
 
-  <!-- Projects section -->
-  <div class="section" id="projects">
+  <!-- Projects -->
+  <div style="margin-bottom: 2rem;">
     <h2 class="section-heading">Projects</h2>
-    <div class="project-list">
-      {projects.map((p) => (
-        <a href={p.href} class="project-card">
-          <img src={p.image} alt={p.name} class="project-card-img" loading="lazy" />
-          <div class="project-card-body">
-            <div class="project-card-title">
-              {p.name}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              {p.featured && <span class="project-featured-badge">Featured</span>}
-            </div>
-            <p class="project-card-desc">{p.description}</p>
-            <ul class="project-card-tags">
-              {p.tags.map((tag) => <li class="project-tag">{tag}</li>)}
-            </ul>
-          </div>
-        </a>
-      ))}
-    </div>
+    {projects.map((p) => (
+      <a href={p.href} class="project-row">
+        <span class="project-row-name">
+          {p.name}
+          {p.featured && <span style="font-size:0.6rem;color:var(--accent);margin-left:0.375rem;opacity:0.7">★</span>}
+        </span>
+        <span class="project-row-tags">
+          {p.tags.map((t) => <span class="project-row-tag">{t}</span>)}
+        </span>
+        <span class="project-row-arrow">↗</span>
+      </a>
+    ))}
   </div>
 
-  <!-- Writing section -->
-  <div class="section">
+  <!-- Writing -->
+  <div>
     <h2 class="section-heading">Writing</h2>
-    <BlogList />
+    <BlogList compact />
   </div>
-
-  <footer class="site-footer">
-    <a href="https://astro.build" target="_blank">Astro</a>
-    ·
-    <a href="https://github.com/bencered/portfolio-v2" target="_blank">Source</a>
-  </footer>
 
 </Layout>
