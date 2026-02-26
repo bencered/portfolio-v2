@@ -1,77 +1,24 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { CornerUpLeft, Github, Link } from "lucide-preact";
-const tags=["Astro", "Tailwind CSS", "Lucide Icons"]
+import ProjectPage from "../../../components/ProjectPage.astro";
 ---
-
-<Layout title={"Bence R. | Portfolio"}>
-	<a
-		class="mb-2 flex cursor-pointer flex-row gap-2 font-mono text-sm transition-all duration-200 hover:text-sky-400 hover:underline"
-		href="/#Projects"
-	>
-		<CornerUpLeft size={20} />
-		Back to projects
-	</a>
-	<h1
-		id="Title"
-		class="text-2xl font-bold tracking-tight text-white sm:text-5xl"
-	>
-		My Portfolio
-	</h1>
-
-	<div class="flex flex-col sm:flex-row w-full gap-2 justify-between pb-4">
-		<div class="flex flex-row sm:flex-col min-w-fit justify-between">
-			<h2>
-				September 2024 - Present
-			</h2>
-			
-			<div class="flex flex-row gap-x-2">
-				<a 
-					href="https://github.com/bencered/portfolio-v2" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Github size={20} /> 
-				</a>
-				<a 
-					href="https://www.bence.app" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Link size={20} /> 
-				</a>
-			</div>
-		</div>
-
-		<ul class="flex flex-row flex-wrap gap-2 sm:justify-end">
-			{
-			tags.map((tag: string) => (
-			<li class="rounded-full mt-2 h-fit bg-sky-500/15 px-3 py-1 font-mono text-xs text-sky-400">
-				{tag}
-			</li>
-			))
-			}
-		</ul>
-	</div>
-
-	<hr class="border-slate-500 pb-4" />
-
-	<img 
-		class="rounded-xl" 
-		src="/portfolio.png" 
-		alt="A screenshot of this page."
-	/>
-	<h4 class="italic mt-1 ml-4 text-sm">Woah...</h4>
-
-	<p class="pt-4">
-	<h2 class="font-bold text-neutral-300">What?</h2>
-	This site!
-
-	<h2 class="font-bold text-neutral-300 pt-2">Why?</h2>
-	To showcase my projects and skills.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Learnings</h2>
-	<ul class="list-disc list-inside">
-		<li>How to use Astro</li>
-	</ul>
-
-	</p>
+<Layout title="Portfolio — Bence R.">
+  <ProjectPage
+    name="Portfolio"
+    date="September 2024 – Present"
+    tags={["Astro", "Tailwind CSS", "Preact"]}
+    image="/portfolio.png"
+    imageAlt="Portfolio screenshot"
+    github="https://github.com/bencered/portfolio-v2"
+    link="https://bence.red"
+  >
+    <div class="section">
+      <h2 class="section-heading">What?</h2>
+      <p>This site. Built with Astro, Tailwind CSS, and Preact for interactive components.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Why?</h2>
+      <p>To have a home on the internet that represents what I can do.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Learnings</h2>
+      <p>Astro's island architecture, content collections, Vercel deployments.</p>
+    </div>
+  </ProjectPage>
 </Layout>

@@ -1,89 +1,24 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { CornerUpLeft, Github, Link } from "lucide-preact";
-const tags = [
-	"Next.js",
-	"React",
-	"Tailwind CSS",
-	"Framer Motion",
-	"Typescript",
-]
+import ProjectPage from "../../../components/ProjectPage.astro";
 ---
-
-<Layout title={"Bence R. | Why Vim?"}>
-	<a
-		class="mb-2 flex cursor-pointer flex-row gap-2 font-mono text-sm transition-all duration-200 hover:text-sky-400 hover:underline"
-		href="/#Projects"
-	>
-		<CornerUpLeft size={20} />
-		Back to projects
-	</a>
-	<h1
-		id="Title"
-		class="text-2xl font-bold tracking-tight text-white sm:text-5xl"
-	>
-		Why Vim?
-	</h1>
-
-	<div class="flex flex-col sm:flex-row w-full gap-2 justify-between pt-2 pb-4">
-
-		<div class="flex flex-row sm:flex-col min-w-fit justify-between">
-			<h2>
-				May 2025 - Present
-			</h2>
-
-			<div class="flex flex-row gap-x-2">
-				<a 
-					href="https://github.com/bencered/why-vim" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Github size={20} /> 
-				</a>
-				<a 
-					href="https://whyvim.org" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Link size={20} /> 
-				</a>
-			</div>
-		</div>
-
-		<ul class="flex flex-row flex-wrap gap-2 sm:justify-end">
-			{
-			tags.map((tag: string) => (
-			<li class="rounded-full bg-sky-500/15 px-3 py-1 font-mono text-xs text-sky-400">
-				{tag}
-			</li>
-			))
-			}
-		</ul>
-	</div>
-
-	<hr class="border-slate-500 pb-4" />
-
-	<img 
-		class="rounded-xl" 
-		src="/why-vim.png" 
-		alt="A screenshot of the intro page of the Why Vim? website"
-	/>
-	<h4 class="italic mt-1 ml-4 text-sm">The landing page.</h4>
-
-	<p class="pt-4">
-	<h2 class="font-bold text-neutral-300">What?</h2>
-	A very work-in-progress website that aims to introduce Vim motions to those unfamiliar with them.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Why?</h2>
-	I wanted to improve on my core React/TypeScript skills, as well as give back to the Vim community.
-	I'm a firm believer that optimising your development workflow will inevitably lead to exponential
-	gains in productivity, and Vim is one of the best ways of doing so.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Learnings</h2>
-	<ul class="list-disc list-inside">
-		<li>Advanced React hooks, e.g useContext</li>
-		<li>Web design</li>
-		<li>Framer Motion</li>
-		<li>Technical writing (kinda)</li>
-	</ul>
-
-	</p>
+<Layout title="Why Vim? — Bence R.">
+  <ProjectPage
+    name="Why Vim?"
+    date="May 2025 – Present"
+    tags={["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"]}
+    image="/why-vim.png"
+    imageAlt="Why Vim landing page"
+    github="https://github.com/bencered/why-vim"
+    link="https://whyvim.org"
+  >
+    <div class="section">
+      <h2 class="section-heading">What?</h2>
+      <p>A work-in-progress site that introduces Vim motions to those unfamiliar with them — interactive, readable, and aimed at making the learning curve less painful.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Why?</h2>
+      <p>I believe optimising your dev workflow leads to exponential productivity gains, and Vim is one of the best ways to do that. Wanted to give back to that community and sharpen my React/TypeScript skills.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Learnings</h2>
+      <p>Advanced React hooks (useContext), Framer Motion animations, technical writing, web design.</p>
+    </div>
+  </ProjectPage>
 </Layout>

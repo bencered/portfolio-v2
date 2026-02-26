@@ -1,65 +1,22 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { CornerUpLeft, Github, Link } from "lucide-preact";
-const tags=["Next.js", "React", "Tailwind CSS", "Turso", "Prisma", "Typescript"]
+import ProjectPage from "../../../components/ProjectPage.astro";
 ---
-
-<Layout title={"Bence R. | QuoteBoat"}>
-	<a
-		class="mb-2 flex cursor-pointer flex-row gap-2 font-mono text-sm transition-all duration-200 hover:text-sky-400 hover:underline"
-		href="/#Projects"
-	>
-		<CornerUpLeft size={20} />
-		Back to projects
-	</a>
-	<h1
-		id="Title"
-		class="text-2xl font-bold tracking-tight text-white sm:text-5xl"
-	>
-		QuoteBoat
-	</h1>
-
-	<div class="flex flex-col sm:flex-row w-full gap-2 justify-between pb-4">
-		<div class="flex flex-row sm:flex-col min-w-fit justify-between">
-			<h2>
-				October 2024 - Present
-			</h2>
-		</div>
-
-		<ul class="flex mt-1 flex-row flex-wrap gap-2 sm:justify-end">
-			{
-			tags.map((tag: string) => (
-			<li class="rounded-full max-h-fit bg-sky-500/15 px-3 py-1 font-mono text-xs text-sky-400">
-				{tag}
-			</li>
-			))
-			}
-		</ul>
-	</div>
-
-	<hr class="border-slate-500 pb-4" />
-
-	<img 
-		class="rounded-xl" 
-		src="/quoteboat.png" 
-		alt="A screenshot of the QuoteBoat home page"
-	/>
-	<h4 class="italic mt-1 ml-4 text-sm">The simple single-page design of QuoteBoat.</h4>
-
-	<p class="pt-4">
-	<h2 class="font-bold text-neutral-300">What?</h2>
-	QuoteBoat is a work-in-progress platform that allows ISE students to record funny, insightful, or stupid things that their friends said. It is a place to share and laugh at the things we say.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Why?</h2>
-	QuoteBoat is a project I started with a classmate to help students in the ISE community share funny quotes and moments. It is a fun way to connect with each other and create a sense of community.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Learnings</h2>
-	<ul class="list-disc list-inside">
-		<li>Learning how to use Turso and Prisma to build a full-stack application.</li>
-		<li>Improving my skills in Next.js and React.</li>
-		<li>Understanding the importance of user experience and design in web applications.</li>
-		<li>Working with a team to build a project from scratch.</li>
-	</ul>
-
-	</p>
+<Layout title="QuoteBoat — Bence R.">
+  <ProjectPage
+    name="QuoteBoat"
+    date="October 2024 – Present"
+    tags={["Next.js", "React", "Tailwind CSS", "Turso", "Prisma", "TypeScript"]}
+    image="/quoteboat.png"
+    imageAlt="QuoteBoat home page"
+  >
+    <div class="section">
+      <h2 class="section-heading">What?</h2>
+      <p>A platform for ISE students to record the funny, insightful, or stupid things their friends said. Simple single-page design, built with a classmate.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Why?</h2>
+      <p>Fun way to build community in the ISE cohort — and an excuse to build a proper full-stack app with a co-developer.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Learnings</h2>
+      <p>Turso + Prisma for full-stack data, collaborative dev workflow, UX design for simplicity.</p>
+    </div>
+  </ProjectPage>
 </Layout>

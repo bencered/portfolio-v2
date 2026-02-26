@@ -1,87 +1,24 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { CornerUpLeft, Github, Link } from "lucide-preact";
-const tags = [
-	"Next.js",
-	"React",
-	"Tailwind CSS",
-	"Framer Motion",
-	"Typescript",
-]
+import ProjectPage from "../../../components/ProjectPage.astro";
 ---
-
-<Layout title={"Bence R. | BetterExams"}>
-	<a
-		class="mb-2 flex cursor-pointer flex-row gap-2 font-mono text-sm transition-all duration-200 hover:text-sky-400 hover:underline"
-		href="/#Projects"
-	>
-		<CornerUpLeft size={20} />
-		Back to projects
-	</a>
-	<h1
-		id="Title"
-		class="text-2xl font-bold tracking-tight text-white sm:text-5xl"
-	>
-		BetterExams
-	</h1>
-
-	<div class="flex flex-col sm:flex-row w-full gap-2 justify-between pt-2 pb-4">
-
-		<div class="flex flex-row sm:flex-col min-w-fit justify-between">
-			<h2>
-				June 2023 - July 2023
-			</h2>
-
-			<div class="flex flex-row gap-x-2">
-				<a 
-					href="https://github.com/bencered/betterexams" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Github size={20} /> 
-				</a>
-				<a 
-					href="https://betterexams.ie" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Link size={20} /> 
-				</a>
-			</div>
-		</div>
-
-		<ul class="flex flex-row flex-wrap gap-2 sm:justify-end">
-			{
-			tags.map((tag: string) => (
-			<li class="rounded-full bg-sky-500/15 px-3 py-1 font-mono text-xs text-sky-400">
-				{tag}
-			</li>
-			))
-			}
-		</ul>
-	</div>
-
-	<hr class="border-slate-500 pb-4" />
-
-	<img 
-		class="rounded-xl" 
-		src="/betterexams.png" 
-		alt="A screenshot of the home page of the BetterExams site. It features a top bar with filtering options, and 6 links to PDFs of past exams/marking schemes."
-	/>
-	<h4 class="italic mt-1 ml-4 text-sm">The home page.</h4>
-
-	<p class="pt-4">
-	<h2 class="font-bold text-neutral-300">What?</h2>
-	I created this site as an alternative to the official examinations.ie website, which is an arguable affront to God. (It proudly displays an e-Government award from 2006. It is as old as I am.)
-
-	<h2 class="font-bold text-neutral-300 pt-2">Why?</h2>
-	The goal from the get-go was to, firstly, improve upon my web-dev skills, and secondly, to save those precious seconds students and teachers spend every day on that hellish site.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Learnings</h2>
-	<ul class="list-disc list-inside">
-		<li>How to use Next.js</li>
-		<li>How to use Tailwind CSS</li>
-		<li>How to use Framer Motion</li>
-		<li>How to use Typescript</li>
-	</ul>
-
-	</p>
+<Layout title="BetterExams — Bence R.">
+  <ProjectPage
+    name="BetterExams.ie"
+    date="June 2023 – July 2023"
+    tags={["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"]}
+    image="/betterexams.png"
+    imageAlt="BetterExams home page"
+    github="https://github.com/bencered/betterexams"
+    link="https://betterexams.ie"
+  >
+    <div class="section">
+      <h2 class="section-heading">What?</h2>
+      <p>An alternative to examinations.ie — which proudly displays an e-Government award from 2006. Easy access to past papers and marking schemes without dealing with its form system.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Why?</h2>
+      <p>Improve my web dev skills and save students the seconds they waste daily on that site.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Learnings</h2>
+      <p>First real project in Next.js, Tailwind CSS, Framer Motion, and TypeScript.</p>
+    </div>
+  </ProjectPage>
 </Layout>
