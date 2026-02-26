@@ -4,50 +4,44 @@ import Quote from "../components/content/quote";
 import BlogList from "../components/blog/BlogList.astro";
 
 const projects = [
-  { name: "BetterExams.ie",      href: "/projects/betterexams",       tags: ["Next.js", "TypeScript"] },
-  { name: "BetterExams Points",  href: "/projects/betterexams-points", tags: ["React", "Tailwind CSS"] },
-  { name: "Why Vim?",            href: "/projects/why-vim",            tags: ["Next.js", "TypeScript"] },
-  { name: "Modern ISE Website",  href: "/projects/modern-ise-website", tags: ["Next.js", "Turso"] },
-  { name: "QuoteBoat",           href: "/projects/quoteboat",          tags: ["Next.js", "Turso"] },
-  { name: "Portfolio",           href: "/projects/portfolio",          tags: ["Astro", "Tailwind CSS"] },
+  { name: "BetterExams.ie",      href: "/projects/betterexams",       desc: "A better alternative to examinations.ie." },
+  { name: "BetterExams Points",  href: "/projects/betterexams-points", desc: "CAO points tracker for Leaving Cert students." },
+  { name: "Why Vim?",            href: "/projects/why-vim",            desc: "A site to help people get into Vim motions." },
+  { name: "Modern ISE Website",  href: "/projects/modern-ise-website", desc: "Weekend redesign of software-engineering.ie." },
+  { name: "QuoteBoat",           href: "/projects/quoteboat",          desc: "Record the stupid things your friends say." },
+  { name: "Portfolio",           href: "/projects/portfolio",          desc: "This site." },
 ];
 ---
 
 <Layout title="Bence R." noScroll>
 
-  <!-- Quote (compact) -->
   <div style="margin-bottom: 1.75rem;">
     <Quote client:load />
   </div>
 
-  <!-- About (one paragraph) -->
-  <div style="margin-bottom: 2rem;">
+  <div style="margin-bottom: 2.5rem;">
     <p style="font-size:0.875rem; color:var(--text); line-height:1.7;">
-      Hi, I'm Bence — I've been programming since I was 11, only seriously got into
+      Hi, I'm Bence — programming since 11, only seriously got into
       web dev around 2023 with <a href="https://betterexams.ie" target="_blank" style="color:var(--accent)">BetterExams.ie</a>.
       Outside of dev: reading, design, oxford commas.
       Big <a href="https://hardcover.app/books/the-way-of-kings" target="_blank" style="color:var(--accent)">Brandon Sanderson</a> fan.
     </p>
   </div>
 
-  <!-- Projects -->
-  <div style="margin-bottom: 2rem;">
+  <div style="margin-bottom: 2.5rem;">
     <h2 class="section-heading">Projects</h2>
     {projects.map((p) => (
       <a href={p.href} class="project-row">
         <span class="project-row-name">{p.name}</span>
-        <span class="project-row-tags">
-          {p.tags.map((t) => <span class="project-row-tag">{t}</span>)}
-        </span>
+        <span class="project-row-desc">{p.desc}</span>
         <span class="project-row-arrow">↗</span>
       </a>
     ))}
   </div>
 
-  <!-- Writing -->
   <div>
     <h2 class="section-heading">Writing</h2>
-    <BlogList compact />
+    <BlogList />
   </div>
 
 </Layout>

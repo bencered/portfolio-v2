@@ -1,4 +1,4 @@
-<span id="age-counter">19.00</span>
+<span id="age-counter">19.000000000</span>
 <script>
     function updateAge() {
         const el = document.querySelector("#age-counter");
@@ -6,8 +6,8 @@
         const interval = setInterval(() => {
             const born = 1142467200000;
             const age = (Date.now() - born) / 31557600000;
-            el.textContent = age.toFixed(2);
-        }, 100);
+            el.textContent = age.toFixed(9);
+        }, 30);
         return () => clearInterval(interval);
     }
     let cleanup = updateAge();
