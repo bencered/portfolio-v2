@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Profile from "../components/profile/Profile.astro";
 import Quote from "../components/content/quote";
 import PersonalDescription from "../components/content/PersonalDescription.astro";
 import ProjectList from "../components/content/ProjectList.astro";
@@ -7,23 +8,9 @@ import BlogList from "../components/blog/BlogList.astro";
 ---
 
 <Layout title="Bence R.">
+    <Profile />
     <Quote client:load />
-
     <PersonalDescription />
-
     <ProjectList />
-
     <BlogList />
-
-    <span class="-mx-8 block w-screen text-center lg:hidden">
-        Made with ❤️ using
-        <a href="https://astro.build" target="_blank">Astro</a>.
-    </span>
 </Layout>
-
-<style>
-    @reference "tailwindcss";
-    a {
-        @apply cursor-pointer font-mono text-slate-200 transition-colors duration-200 hover:text-sky-400;
-    }
-</style>

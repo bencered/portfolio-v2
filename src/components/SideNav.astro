@@ -1,0 +1,123 @@
+---
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { label: "Overview", href: "/" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Writing", href: "/ramblings" },
+  { label: "Reading", href: "/reading" },
+  { label: "Quotes", href: "/quotes" },
+];
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/bencered" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/bence-redmond" },
+];
+
+function isActive(href: string): boolean {
+  if (href === "/" || href === "/#projects") return pathname === "/";
+  return pathname.startsWith(href);
+}
+
+const nameChars = "/bence.red".split("");
+---
+
+<nav
+  id="side-nav"
+  class="fixed left-0 top-0 h-full w-[180px] flex flex-col z-40 overflow-y-auto"
+  style="background: #F7F6F1;"
+>
+  <!-- Logo -->
+  <div class="px-5 pt-7 pb-5">
+    <a href="/" class="block text-[13px] font-mono text-[#111] leading-snug">
+      {nameChars.map((char, i) => (
+        <span
+          class="typed-char"
+          style={`animation-delay: ${i * 0.06 + 0.15}s; ${char === "/" ? "color: #4C74FF;" : ""}`}
+        >{char}</span>
+      ))}
+    </a>
+  </div>
+
+  <!-- Nav links -->
+  <div class="flex-1 px-4">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class:list={[
+          "block px-1 py-[5px] text-[13px] transition-colors duration-100 rounded",
+          isActive(link.href)
+            ? "text-[#111] font-medium"
+            : "text-[#888] hover:text-[#333]"
+        ]}
+      >
+        {link.label}
+      </a>
+    ))}
+
+    <!-- Socials section -->
+    <div class="mt-5 mb-1 px-1">
+      <span class="text-[10px] uppercase tracking-widest text-[#bbb] font-medium">Socials</span>
+    </div>
+    {socials.map((social) => (
+      <a
+        href={social.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-1 px-1 py-[5px] text-[13px] text-[#888] hover:text-[#333] transition-colors duration-100"
+      >
+        {social.label}
+        <svg width="9" height="9" viewBox="0 0 10 10" fill="none" class="opacity-50 flex-shrink-0">
+          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    ))}
+  </div>
+
+  <!-- Footer -->
+  <div class="px-5 py-5">
+    <span class="text-[11px] text-[#bbb]">v2 · <a href="https://astro.build" target="_blank" class="hover:text-[#888] transition-colors">Astro</a></span>
+  </div>
+</nav>
+
+<!-- Mobile top bar -->
+<div class="md:hidden fixed top-0 left-0 right-0 h-11 flex items-center justify-between px-5 z-50" style="background: #F7F6F1; border-bottom: 1px solid rgba(0,0,0,0.07);">
+  <a href="/" class="text-[13px] font-mono text-[#111]">
+    <span style="color:#4C74FF">/</span>bence.red
+  </a>
+  <button
+    id="mobile-menu-toggle"
+    class="flex flex-col gap-[5px] p-1.5 cursor-pointer bg-transparent border-0"
+    aria-label="Toggle menu"
+  >
+    <span class="block w-[18px] h-px bg-[#555]"></span>
+    <span class="block w-[18px] h-px bg-[#555]"></span>
+  </button>
+</div>
+
+<!-- Mobile overlay -->
+<div id="mobile-overlay" class="md:hidden fixed inset-0 bg-black/10 z-30 hidden"></div>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const nav = document.getElementById('side-nav');
+  const overlay = document.getElementById('mobile-overlay');
+
+  function openNav() {
+    nav?.classList.add('open');
+    overlay?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
+    nav?.classList.remove('open');
+    overlay?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  toggle?.addEventListener('click', () => nav?.classList.contains('open') ? closeNav() : openNav());
+  overlay?.addEventListener('click', closeNav);
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    if (window.innerWidth < 768) closeNav();
+  }));
+</script>

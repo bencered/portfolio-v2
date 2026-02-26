@@ -4,35 +4,16 @@ import TopFive from "../../components/books/TopFive.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="Bence R.">
-    <h1
-        id="Title"
-        class="mb-2 text-2xl font-bold tracking-tight text-slate-200 sm:text-5xl"
-    >
-        Reading
-    </h1>
+<Layout title="Reading — Bence R.">
+  <header class="mb-10">
+    <h1 class="text-[2rem] font-bold text-[#111] mb-2">Reading</h1>
+    <p class="text-[15px] text-[#666]">
+      Tracked via <a href="https://hardcover.app" target="_blank" class="text-[#111] underline decoration-[rgba(0,0,0,0.25)] underline-offset-2 hover:decoration-[#4C74FF] transition-colors">Hardcover</a>.
+      Data pulled live from their API.
+    </p>
+  </header>
 
-    <h3 class="text-lg">
-        Here's a small window into what I like to read! I use the amazing
-        service
-        <a
-            class="cursor-pointer font-mono text-slate-200 transition-colors duration-200 hover:text-sky-400"
-            href="https://hardcover.app"
-            target="_blank">Hardcover</a
-        > to track everything, and their API is what's used to fetch the data for
-        this page.
-    </h3>
+  <CurrentlyReading />
 
-    <CurrentlyReading />
-
-    <TopFive />
-
-    <span class="-mx-8 block w-screen text-center lg:hidden">
-        Made with ❤️ using
-        <a
-            class="cursor-pointer font-mono text-slate-200 transition-colors duration-200 hover:text-sky-400"
-            href="https://astro.build"
-            target="_blank">Astro</a
-        >.
-    </span>
+  <TopFive />
 </Layout>
