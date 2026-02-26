@@ -110,18 +110,6 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px;
-  position: relative;
-}
-
-.layout::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(255,255,255,0.22);
-  pointer-events: none;
 }
 
 @media (min-width: 1024px) {
