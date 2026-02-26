@@ -36,7 +36,13 @@ function isActive(href: string): boolean {
 </div>
 
 <script>
-  const toggle = document.getElementById('mobile-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => menu?.classList.toggle('open'));
+  function initMobileNav() {
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+  }
+
+  // Runs on first load and after every View Transition navigation
+  document.addEventListener('astro:page-load', initMobileNav);
 </script>
