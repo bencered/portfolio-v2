@@ -121,6 +121,7 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
   height: 100vh;
   overflow: hidden;
   gap: 0;
+  border-top: 1px solid var(--border);
 }
 
 @media (min-width: 1024px) {
@@ -133,6 +134,7 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
 .main-col {
   width: 100%;
   padding: 2rem 0 6rem;
+  border-top: 1px solid var(--border);
 }
 
 @media (min-width: 1024px) {
