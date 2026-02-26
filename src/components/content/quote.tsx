@@ -1,5 +1,5 @@
+import { useState, useEffect } from "preact/hooks";
 import { RefreshCcw } from "lucide-preact";
-import { signal } from '@preact/signals';
 
 const quotes = [
     ["Overconfidence is a slow and insidious killer.", "Darkest Dungeon"],
@@ -13,41 +13,31 @@ const quotes = [
     ["My memory is to the world as a drawing is to the photograph. Imperfect. More perfect.", "Hadrian Marlowe"],
     ["The artist sees things not in terms of what is or might be, but in terms of what must be.", "Hadrian Marlowe"],
     ["When my bird was looking at my computer monitor, I thought, 'Woah, that bird has no idea what he's looking at.' And yet what does the bird do? Does he panic? No. He just does the best he can.", "Terry Davis"],
+    ["And so, does the destination matter? Or is it the path we take? It is the journey that shapes us.", "Brandon Sanderson"],
 ];
 
-let randomQuote = signal(["", ""]);
+function random(exclude?: number): number {
+    let i: number;
+    do { i = Math.floor(Math.random() * quotes.length); } while (i === exclude);
+    return i;
+}
 
-const Quote = () => {
-    if (typeof window === "undefined") {
-        return (
-            <div class="quote-card">
-                <div style="height:3rem;background:rgba(255,255,255,0.04);border-radius:0.25rem"></div>
-            </div>
-        );
-    }
-
-    if (!randomQuote.value[0]) {
-        randomQuote.value = quotes[Math.floor(Math.random() * quotes.length)];
-    }
-
-    const next = () => {
-        const cur = randomQuote.value;
-        let n;
-        do { n = quotes[Math.floor(Math.random() * quotes.length)]; } while (n[0] === cur[0]);
-        randomQuote.value = n;
-    };
+export default function Quote() {
+    const [idx, setIdx] = useState(() => random());
 
     return (
         <div class="quote-card">
-            <blockquote>"{randomQuote.value[0]}"</blockquote>
+            <blockquote>"{quotes[idx][0]}"</blockquote>
             <div class="quote-card-footer">
-                <span class="quote-attribution">— {randomQuote.value[1]}</span>
-                <button class="quote-refresh" onClick={next} title="Next quote">
+                <button
+                    class="quote-refresh"
+                    onClick={() => setIdx(i => random(i))}
+                    title="Next quote"
+                >
                     <RefreshCcw size={12} />
                 </button>
+                <span class="quote-attribution">— {quotes[idx][1]}</span>
             </div>
         </div>
     );
-};
-
-export default Quote;
+}
