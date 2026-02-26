@@ -5,7 +5,7 @@ const pathname = Astro.url.pathname;
 
 const navLinks = [
   { href: "/", label: "Overview" },
-  { href: "/ramblings", label: "Writing" },
+  { href: "/writing", label: "Writing" },
   { href: "/reading", label: "Reading" },
   { href: "/quotes", label: "Quotes" },
 ];
@@ -13,7 +13,7 @@ const navLinks = [
 const socials = [
   { href: "https://github.com/bencered", label: "GitHub" },
   { href: "https://linkedin.com/in/bence-redmond", label: "LinkedIn" },
-  { href: "https://x.com/benceredmond", label: "X / Twitter" },
+  { href: "https://x.com/benceredmond", label: "Twitter" },
 ];
 
 function isActive(href: string): boolean {

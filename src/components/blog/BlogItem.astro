@@ -6,7 +6,7 @@ interface Props {
 
 const { post, compact = false } = Astro.props;
 const pData = post.data;
-const postLink = "/ramblings/" + pData.slug;
+const postLink = "/writing/" + pData.slug;
 const postDate = new Date(pData.pubDate);
 const postDateStr = postDate.toLocaleDateString("en-IE", { year: "numeric", month: "short", day: "numeric" });
 ---
