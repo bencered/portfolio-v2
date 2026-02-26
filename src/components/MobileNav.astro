@@ -1,0 +1,48 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+  { href: "/", label: "Overview" },
+  { href: "/writing", label: "Writing" },
+  { href: "/reading", label: "Reading" },
+  { href: "/quotes", label: "Quotes" },
+];
+
+function isActive(href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+---
+
+<header class="mobile-nav">
+  <span class="mobile-nav-logo">Bence R.</span>
+  <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      class:list={[{ active: isActive(link.href) }]}
+    >
+      {link.label}
+    </a>
+  ))}
+  <a href="https://github.com/bencered" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  <a href="https://linkedin.com/in/bence-redmond" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+</div>
+
+<script>
+  function initMobileNav() {
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+  }
+
+  // Runs on first load and after every View Transition navigation
+  document.addEventListener('astro:page-load', initMobileNav);
+</script>

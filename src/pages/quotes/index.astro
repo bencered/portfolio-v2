@@ -2,111 +2,38 @@
 import Layout from "../../layouts/Layout.astro";
 
 const quotes = [
-    [
-        "Overconfidence is a slow and insidious killer.",
-        "Darkest Dungeon"
-    ],
-    [
-        "Freedom of thought and action matter, and are guaranteed, because the future is not.",
-        "Hadrian Marlowe"
-    ],
-    [
-        "An idiot admires complexity, a genius admires simplicity. The more complicated something is, the more an idiot will admire it. If you make something so clusterfucked he can’t understand it, he’s gonna think you’re a god.",
-        "Terry Davis",
-    ],
-    [
-        "The question, is not whether you will love, hurt, dream, and die. It is what you will love, why you will hurt, when you will dream, and how you will die. This is your choice. You cannot pick the destination, only the path.",
-        "Jasnah Kholin",
-    ],
-    [
-        "Abolish the idea of winning by “chance”, and claim victory as a logical consequence.",
-        "Blue Lock",
-    ],
-    [
-        "The trick to happiness wasn’t in freezing every momentary pleasure and clinging to each one, but in ensuring one’s life would produce many future moments to anticipate.",
-        "Brandon Sanderson",
-    ],
-    [
-        "If I must fall, I will rise each time a better man."
-        , "Dalinar Kholin"
-    ],
-    [
-        "Your real ability only consists of what you can actually do when it counts.",
-        "Blue Lock",
-    ],
-    [
-        "I had dreamed of this moment since I was a boy, since I'd learned that Delos was not the world but a planet island in it."
-        , "Hadrian Marlowe"
-    ],
-    [
-        "When my bird was looking at my computer monitor, I thought, ‘Woah, that bird has no idea what he’s looking at.’ And yet what does the bird do? Does he panic? No, he can’t really panic, he just does the best he can. Is he able to live in a world where he’s so ignorant? Well, he doesn’t really have a choice. The bird is okay even though he doesn’t understand the world. You’re that bird looking at the monitor, and you’re thinking to yourself, I can figure this out. Maybe you have some bird ideas. Maybe that’s the best you can do.",
-        "Terry Davis",
-    ],
-    [
-        "The longer you live, the more you fail. Failure is the mark of a life well lived. In turn, the only way to live without failure is to be of no use to anyone. Trust me, I’ve practiced.",
-        "Wit",
-    ],
-    [
-        "The most important step a man can take. It's not the first one, is it? It's the next one. Always the next step, Dalinar.",
-        "Dalinar Kholin",
-    ],
-    [
-        "And so, does the destination matter? Or is it the path we take? I declare that no accomplishment has substance nearly as great as the road used to achieve it. We are not creatures of destinations. It is the journey that shapes us. Our callused feet, our backs strong from carrying the weight of our travels, our eyes open with the fresh delight of experiences lived.",
-        "Brandon Sanderson",
-    ],
-    [
-        "It's said that everything you eat, even the air you breath, becomes part of you. The axi that make up the matter you take in come to make up you instead. I, however, find that the moments we take into our souls as memories are far more important than what we eat. We need those moments as surely as the air, and they linger. Potent. Yes, a person is more than their experiences, stacked up like stones. But our best moments are the foundations we use to reach for the sky.",
-        "Wit"
-    ],
-    [
-        "I've heard that art is the only truly useless creation - intended for no mechanical purpose. Valued only because of the perception of the people who view it. The thing is, everything is useless, intrinsically. Nothing has value unless we grant it that value. Any object can be worth whatever we decide it to be worth.",
-        "Wit"
-    ],
-    [
-        "My memory is to the world as a drawing is to the photograph. Imperfect. More perfect. We remember what we must, what we choose to, because it is more beautiful and real than the truth.",
-        "Hadrian Marlowe"
-    ],
-    [
-        "The artist sees things not in terms of what is or might be, but in terms of what must be. Of what our world must become. This is why a portrait will—to the human observer—always defeat the photograph",
-        "Hadrian Marlowe"
-    ],
+    ["Overconfidence is a slow and insidious killer.", "Darkest Dungeon"],
+    ["Freedom of thought and action matter, and are guaranteed, because the future is not.", "Hadrian Marlowe"],
+    ["An idiot admires complexity, a genius admires simplicity. The more complicated something is, the more an idiot will admire it. If you make something so clusterfucked he can't understand it, he's gonna think you're a god.", "Terry Davis"],
+    ["The question, is not whether you will love, hurt, dream, and die. It is what you will love, why you will hurt, when you will dream, and how you will die. This is your choice. You cannot pick the destination, only the path.", "Jasnah Kholin"],
+    ['Abolish the idea of winning by "chance", and claim victory as a logical consequence.', "Blue Lock"],
+    ["The trick to happiness wasn't in freezing every momentary pleasure and clinging to each one, but in ensuring one's life would produce many future moments to anticipate.", "Brandon Sanderson"],
+    ["If I must fall, I will rise each time a better man.", "Dalinar Kholin"],
+    ["Your real ability only consists of what you can actually do when it counts.", "Blue Lock"],
+    ["I had dreamed of this moment since I was a boy, since I'd learned that Delos was not the world but a planet island in it.", "Hadrian Marlowe"],
+    ["When my bird was looking at my computer monitor, I thought, 'Woah, that bird has no idea what he's looking at.' And yet what does the bird do? Does he panic? No, he can't really panic, he just does the best he can. Is he able to live in a world where he's so ignorant? Well, he doesn't really have a choice. The bird is okay even though he doesn't understand the world. You're that bird looking at the monitor, and you're thinking to yourself, I can figure this out. Maybe you have some bird ideas. Maybe that's the best you can do.", "Terry Davis"],
+    ["The longer you live, the more you fail. Failure is the mark of a life well lived. In turn, the only way to live without failure is to be of no use to anyone. Trust me, I've practiced.", "Wit"],
+    ["The most important step a man can take. It's not the first one, is it? It's the next one. Always the next step, Dalinar.", "Dalinar Kholin"],
+    ["And so, does the destination matter? Or is it the path we take? I declare that no accomplishment has substance nearly as great as the road used to achieve it. We are not creatures of destinations. It is the journey that shapes us. Our callused feet, our backs strong from carrying the weight of our travels, our eyes open with the fresh delight of experiences lived.", "Brandon Sanderson"],
+    ["It's said that everything you eat, even the air you breath, becomes part of you. The axi that make up the matter you take in come to make up you instead. I, however, find that the moments we take into our souls as memories are far more important than what we eat. We need those moments as surely as the air, and they linger. Potent. Yes, a person is more than their experiences, stacked up like stones. But our best moments are the foundations we use to reach for the sky.", "Wit"],
+    ["I've heard that art is the only truly useless creation - intended for no mechanical purpose. Valued only because of the perception of the people who view it. The thing is, everything is useless, intrinsically. Nothing has value unless we grant it that value. Any object can be worth whatever we decide it to be worth.", "Wit"],
+    ["My memory is to the world as a drawing is to the photograph. Imperfect. More perfect. We remember what we must, what we choose to, because it is more beautiful and real than the truth.", "Hadrian Marlowe"],
+    ["The artist sees things not in terms of what is or might be, but in terms of what must be. Of what our world must become. This is why a portrait will—to the human observer—always defeat the photograph.", "Hadrian Marlowe"],
 ];
 ---
 
-<Layout title="Bence R.">
-    <h1
-        id="Title"
-        class="mb-2 text-2xl font-bold tracking-tight text-slate-200 sm:text-5xl"
-    >
-        Favourite Quotes
-    </h1>
+<Layout title="Quotes — Bence R.">
+  <div class="section">
+    <h2 class="section-heading">Favourite Quotes</h2>
+    <p style="margin-bottom:1.5rem">Things that have stuck with me.</p>
 
-    <h3 class="text-lg">
-        Here are some quotes that seriously resonate with me. I hope you find
-        them as inspiring as I do.
-    </h3>
-
-    <ul class="mt-8 tracking-tight">
-        {quotes.map((quote) => (
-        <div class="my-8 h-[2px] w-full bg-slate-600/50" />
-        <li class="flex flex-col gap-y-2">
-            <p class="text-lg font-mono text-slate-400 relative pl-6">
-                <span class="absolute left-0 top-0 text-sky-400/70 text-2xl">"</span>{quote[0]}<span class="text-sky-400/70 text-2xl">"</span>
-            </p>
-            <p class="text-sm font-mono text-slate-500">
-                — {quote[1]}
-            </p>
-        </li>
-        ))}
-    </ul>
-
-
-    <span class="mt-8 -mx-8 block w-screen text-center lg:hidden">
-        Made with ❤️ using
-        <a
-            class="cursor-pointer font-mono text-slate-200 transition-colors duration-200 hover:text-sky-400"
-            href="https://astro.build"
-            target="_blank">Astro</a
-        >.
-    </span>
+    {quotes.map((quote) => (
+      <div style="padding: 1rem 0; border-bottom: 1px solid var(--border);">
+        <p style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text); line-height: 1.65; font-style: italic; margin-bottom: 0.5rem !important;">
+          "{quote[0]}"
+        </p>
+        <p style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 0 !important;">— {quote[1]}</p>
+      </div>
+    ))}
+  </div>
 </Layout>

@@ -1,0 +1,60 @@
+---
+import Age from "./profile/Age.astro";
+
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { href: "/", label: "Overview" },
+  { href: "/writing", label: "Writing" },
+  { href: "/reading", label: "Reading" },
+  { href: "/quotes", label: "Quotes" },
+];
+
+const socials = [
+  { href: "https://github.com/bencered", label: "GitHub" },
+  { href: "https://linkedin.com/in/bence-redmond", label: "LinkedIn" },
+  { href: "https://x.com/benceredmond", label: "Twitter" },
+];
+
+function isActive(href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+---
+
+<div class="sidebar-identity">
+  <h1>
+    Bence <span class="sketchy-underline">Redmond</span>
+  </h1>
+  <p class="subtitle">
+    <Age /> yrs old.
+  </p>
+  <p class="bio">
+    First-year ISE student in Limerick, Ireland. Programming since 11, building for the web since 2023.
+  </p>
+</div>
+
+<nav class="sidebar-nav">
+  {navLinks.map((link) => (
+    <a
+      href={link.href}
+      class:list={["nav-item", { active: isActive(link.href) }]}
+    >
+      <span class="nav-line"></span>
+      <span class="nav-label">{link.label}</span>
+    </a>
+  ))}
+</nav>
+
+<div class="sidebar-footer">
+  <div class="sidebar-footer-links">
+    {socials.map((s) => (
+      <a href={s.href} target="_blank" rel="noopener noreferrer" class="social-link">
+        {s.label}
+        <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    ))}
+  </div>
+</div>

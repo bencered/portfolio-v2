@@ -8,49 +8,27 @@ const response = await fetch("https://api.hardcover.app/v1/graphql", {
         authorization: import.meta.env.HARDCOVER_KEY,
     },
     body: JSON.stringify({
-        query: `
-        query CurrentlyReading {
+        query: `query CurrentlyReading {
           me {
             user_books(where: {status_id: {_eq: 2}}) {
               id
               book {
-                title
-                pages
-                book_series {
-                  series {
-                    name
-                  }
-                }
-                description
-                image {
-                  url
-                }
-                release_date
-                rating
-                slug
-
-                contributions {
-                   author {
-                     name
-                   }
-                }
-
+                title pages description slug rating release_date
+                image { url }
+                contributions { author { name } }
               }
             }
           }
-        }      
-`,
+        }`,
     }),
 });
 
-
 const json = await response.json();
-const currentlyReading = json["data"]["me"][0]["user_books"];
+const currentlyReading = json?.data?.me?.[0]?.user_books ?? [];
 ---
 
-<h2 class="mb-1 mt-8 text-2xl tracking-tight text-slate-200">
-    Currently Reading
-</h2>
-<h3 class="mb-2 text-lg">The books that I am reading at the moment.</h3>
-
-{currentlyReading.map((book) => <BookCard props={book} />)}
+<h2 class="section-heading">Currently Reading</h2>
+{currentlyReading.length === 0
+    ? <p style="font-size:0.875rem; color:var(--text-muted);">Nothing tracked right now.</p>
+    : currentlyReading.map((book) => <BookCard props={book} />)
+}

@@ -1,80 +1,25 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { CornerUpLeft, Github, Link } from "lucide-preact";
-const tags=["React", "Tailwind CSS"]
+import ProjectPage from "../../../components/ProjectPage.astro";
 ---
-
-<Layout title={"Bence R. | ISE Redesign"}>
-	<a
-		class="mb-2 flex cursor-pointer flex-row gap-2 font-mono text-sm transition-all duration-200 hover:text-sky-400 hover:underline"
-		href="/#Projects"
-	>
-		<CornerUpLeft size={20} />
-		Back to projects
-	</a>
-	<h1
-		id="Title"
-		class="text-2xl font-bold tracking-tight text-white sm:text-5xl"
-	>
-		Modern ISE Website
-	</h1>
-
-	<div class="flex flex-col sm:flex-row w-full gap-2 justify-between pb-4">
-		<div class="flex flex-row sm:flex-col min-w-fit justify-between">
-			<h2>
-				December 2024
-			</h2>
-			
-			<div class="flex flex-row gap-x-2">
-				<a 
-					href="https://github.com/bencered/modern-ise-website" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Github size={20} /> 
-				</a>
-				<a 
-					href="https://modern-ise-website.vercel.app/" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Link size={20} /> 
-				</a>
-			</div>
-		</div>
-
-		<ul class="flex flex-row flex-wrap gap-2 sm:justify-end">
-			{
-			tags.map((tag: string) => (
-			<li class="rounded-full mt-2 h-fit bg-sky-500/15 px-3 py-1 font-mono text-xs text-sky-400">
-				{tag}
-			</li>
-			))
-			}
-		</ul>
-	</div>
-
-	<hr class="border-slate-500 pb-4" />
-
-	<img 
-		class="rounded-xl" 
-		src="/modern-ise-website.png" 
-		alt="A screenshot of the homepage."
-	/>
-	<h4 class="italic mt-1 ml-4 text-sm">Industrial...</h4>
-
-	<p class="pt-4">
-	<h2 class="font-bold text-neutral-300">What?</h2>
-	A weekend exercise to step outside my &apos;design comfort zone&apos;. Honestly speaking, the seed of the idea came from wanting to make a website with square buttons 😅.
-	<br />
-	I'm probably most proud of the text animations... (Refresh the page)
-
-	<h2 class="font-bold text-neutral-300 pt-2">Why?</h2>
-	To practice my design skills, and to propose a potential new design direction for the official site.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Learnings</h2>
-	<ul class="list-disc list-inside">
-		<li>Design is fun</li>
-		<li>Square buttons look cool</li>
-	</ul>
-
-	</p>
+<Layout title="Modern ISE Website — Bence R.">
+  <ProjectPage
+    name="Modern ISE Website"
+    date="December 2024"
+    tags={["React", "Tailwind CSS"]}
+    image="/modern-ise.png"
+    imageAlt="Industrial-style redesign of software-engineering.ie"
+    github="https://github.com/bencered/modern-ise-website"
+    link="https://modern-ise-website.vercel.app/"
+  >
+    <div class="section">
+      <h2 class="section-heading">What?</h2>
+      <p>A weekend exercise to step outside my design comfort zone. Honestly speaking, the seed of the idea came from wanting to make a website with square buttons 😅.</p>
+      <p style="margin-top:0.75rem">I'm probably most proud of the text animations — refresh the page to see them.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Why?</h2>
+      <p>To practice my design skills, and to propose a potential new design direction for the official site.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Learnings</h2>
+      <p>Design is fun. Square buttons look cool.</p>
+    </div>
+  </ProjectPage>
 </Layout>

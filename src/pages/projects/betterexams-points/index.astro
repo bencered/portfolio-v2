@@ -1,89 +1,24 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { CornerUpLeft, Github, Link } from "lucide-preact";
-const tags=[
-	"Next.js",
-	"React",
-	"Tailwind CSS",
-	"Turso",
-	"Prisma",
-	"Typescript",
-]
+import ProjectPage from "../../../components/ProjectPage.astro";
 ---
-
-<Layout title={"Bence R. | BetterExams Points"}>
-	<a
-		class="mb-2 flex cursor-pointer flex-row gap-2 font-mono text-sm transition-all duration-200 hover:text-sky-400 hover:underline"
-		href="/#Projects"
-	>
-		<CornerUpLeft size={20} />
-		Back to projects
-	</a>
-	<h1
-		id="Title"
-		class="text-2xl font-bold tracking-tight text-white sm:text-5xl"
-	>
-		BetterExams Points
-	</h1>
-
-	<div class="flex flex-col sm:flex-row w-full gap-2 justify-between pt-2 pb-4">
-		<div class="flex flex-row sm:flex-col min-w-fit justify-between">
-			<h2>
-				December 2023 - April 2024
-			</h2>
-
-			<div class="flex flex-row gap-x-2">
-				<a 
-					href="https://github.com/bencered/points-calculator" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Github size={20} /> 
-				</a>
-				<a 
-					href="https://points.betterexams.ie" 
-					class="bg-neutral-100/10 p-[6px] rounded-lg hover:bg-neutral-100/20 transition-all duration-100"
-				>
-					<Link size={20} /> 
-				</a>
-			</div>
-		</div>
-
-		<ul class="flex flex-row flex-wrap gap-2 sm:justify-end">
-			{
-			tags.map((tag: string) => (
-			<li class="rounded-full bg-sky-500/15 px-3 py-1 font-mono text-xs text-sky-400">
-				{tag}
-			</li>
-			))
-			}
-		</ul>
-	</div>
-
-	<hr class="border-slate-500 pb-4" />
-
-	<img 
-		class="rounded-xl" 
-		src="/bep_home.webp" 
-		alt="The home dashboard of BetterExams Points. Shows a graph of a person's points over time."
-	/>
-	<h4 class="italic mt-1 ml-4 text-sm">The home dashboard for students.</h4>
-
-	<p class="pt-4">
-	<h2 class="font-bold text-neutral-300">What?</h2>
-	A gradebook for Leaving Cert students in Ireland. Track your test results, see how you do over time, calculate the points you'd earn based on average grades, and more.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Why?</h2>
-	Built originally as the second entry in the BetterExams suite, it taught be a lot about front-end design, but more importantly about back-end design and how CRUD apps are built.
-
-	<h2 class="font-bold text-neutral-300 pt-2">Learnings</h2>
-	<ul class="list-disc list-inside">
-		<li>How to build a CRUD app from scratch</li>
-		<li>How to use Prisma for database management</li>
-		<li>How to use Next.js for server-side rendering</li>
-		<li>How to use React for front-end design</li>
-		<li>How to use Tailwind CSS for styling</li>
-		<li>How to use Typescript for type safety</li>
-	</ul>
-
-	</p>
+<Layout title="BetterExams Points — Bence R.">
+  <ProjectPage
+    name="BetterExams Points"
+    date="December 2023 – April 2024"
+    tags={["Next.js", "React", "Tailwind CSS", "Turso", "Prisma", "TypeScript"]}
+    image="/betterexams-points.png"
+    imageAlt="BetterExams Points home dashboard"
+    github="https://github.com/bencered/points-calculator"
+    link="https://points.betterexams.ie"
+  >
+    <div class="section">
+      <h2 class="section-heading">What?</h2>
+      <p>A gradebook for Leaving Cert students in Ireland. Track your test results, see how you do over time, calculate the points you'd earn based on average grades, and more.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Why?</h2>
+      <p>Built originally as the second entry in the BetterExams suite, it taught me a lot about front-end design, but more importantly about back-end design and how CRUD apps are built.</p>
+      <h2 class="section-heading" style="margin-top:1.5rem">Learnings</h2>
+      <p>How to build a CRUD app from scratch. How to use Prisma for database management. How to use Next.js for server-side rendering. How to use Turso for a serverless SQLite database.</p>
+    </div>
+  </ProjectPage>
 </Layout>

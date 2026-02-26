@@ -1,13 +1,16 @@
 ---
 import BlogItem from "./BlogItem.astro";
-import { defineCollection, getCollection, z } from "astro:content";
+import { getCollection } from "astro:content";
 
-let allPosts = await getCollection("ramblings")
+interface Props {
+  compact?: boolean;
+  limit?: number;
+}
+
+const { compact = false, limit } = Astro.props;
+const allPosts = await getCollection("writing");
+const sorted = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const posts = limit ? sorted.slice(0, limit) : sorted;
 ---
 
-<h2 id="Ramblings" class="mb-4 text-2xl font-bold tracking-tight text-slate-200 sm:text-3xl scroll-m-8">
-    Ramblings (Blog)
-</h2>
-<div class="flex flex-col gap-y-4">
-    {allPosts.map((post) => <BlogItem post={post} />)}
-</div>
+{posts.map((post) => <BlogItem post={post} compact={compact} />)}

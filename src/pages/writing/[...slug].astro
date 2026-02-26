@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Prose from "../../components/blog/Prose.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("writing");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formattedDate = entry.data.pubDate.toLocaleDateString("en", {
+    year: "numeric", month: "long", day: "numeric"
+});
+---
+
+<Layout title={entry.data.title}>
+    <div style="margin-bottom:2rem">
+        <a href="/writing" style="font-size:0.75rem; color:var(--text-muted); text-decoration:none; display:inline-flex; align-items:center; gap:0.375rem; transition:color 0.15s ease;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+            Writing
+        </a>
+    </div>
+
+    <h2 class="section-heading">{formattedDate}</h2>
+
+    <h1 style="font-family:var(--font-title); font-size:2rem; font-weight:600; line-height:1.2; color:var(--text-strong); margin-bottom:2rem; letter-spacing:-0.02em;">
+        {entry.data.title}
+    </h1>
+
+    <Prose>
+        <Content />
+    </Prose>
+</Layout>

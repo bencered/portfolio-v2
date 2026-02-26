@@ -1,67 +1,39 @@
 ---
 import "../styles/globals.css"
-import Profile from "../components/profile/Profile.astro"
+import Sidebar from "../components/Sidebar.astro"
+import MobileNav from "../components/MobileNav.astro"
 import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro'
 
 interface Props {
     title: string;
+    noScroll?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, noScroll = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         <script defer src="https://umami.bence.red/script.js" data-website-id="e632ac30-04d3-42b5-9d01-8481db69b9a1"></script>
-
         <ClientRouter />
     </head>
-
-    <body
-        class="bg-slate-900 bg-linear-to-br from-slate-900 to-slate-800 leading-relaxed text-slate-400 "
-    >
+    <body>
         <Analytics />
-        <div
-            class="mx-auto min-h-screen max-w-(--breakpoint-xl) px-6 py-12 font-sans md:px-12 md:py-20 lg:flex lg:justify-between lg:gap-4 lg:px-24 lg:py-0"
-        >
-            <Profile />
-
-            <main class="pt-8 lg:w-1/2 lg:py-24">
+        <MobileNav />
+        <div class="layout">
+            <aside class="sidebar">
+                <Sidebar />
+            </aside>
+            <main class:list={["main-col", { "no-scroll": noScroll }]}>
                 <slot />
             </main>
         </div>
     </body>
 </html>
-
-
-<style is:global>
-    :root {
-        --accent: 136, 58, 234;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-            45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%
-        );
-    }
-    code {
-        font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-    }
-</style>
