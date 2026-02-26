@@ -1,6 +1,6 @@
 ---
 import "../styles/globals.css"
-import SideNav from "../components/SideNav.astro"
+import Sidebar from "../components/Sidebar.astro"
 import MobileNav from "../components/MobileNav.astro"
 import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro'
@@ -26,9 +26,13 @@ const { title } = Astro.props;
     <body>
         <Analytics />
         <MobileNav />
-        <SideNav />
-        <main class="main-content">
-            <slot />
-        </main>
+        <div class="layout">
+            <aside class="sidebar">
+                <Sidebar />
+            </aside>
+            <main class="main-col">
+                <slot />
+            </main>
+        </div>
     </body>
 </html>

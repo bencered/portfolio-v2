@@ -15,13 +15,13 @@ const quotes = [
     ["When my bird was looking at my computer monitor, I thought, 'Woah, that bird has no idea what he's looking at.' And yet what does the bird do? Does he panic? No. He just does the best he can.", "Terry Davis"],
 ];
 
-let randomQuote = signal(["", ""])
+let randomQuote = signal(["", ""]);
 
 const Quote = () => {
-    if (typeof window == "undefined") {
+    if (typeof window === "undefined") {
         return (
             <div class="quote-card">
-                <div style="height:2.5rem;background:rgba(0,0,0,0.04);border-radius:0.25rem;animation:pulse 1.5s ease-in-out infinite"></div>
+                <div style="height:3rem;background:rgba(255,255,255,0.04);border-radius:0.25rem"></div>
             </div>
         );
     }
@@ -31,11 +31,10 @@ const Quote = () => {
     }
 
     const next = () => {
-        const current = randomQuote.value;
-        let next;
-        do { next = quotes[Math.floor(Math.random() * quotes.length)]; }
-        while (next[0] === current[0]);
-        randomQuote.value = next;
+        const cur = randomQuote.value;
+        let n;
+        do { n = quotes[Math.floor(Math.random() * quotes.length)]; } while (n[0] === cur[0]);
+        randomQuote.value = n;
     };
 
     return (
@@ -43,8 +42,8 @@ const Quote = () => {
             <blockquote>"{randomQuote.value[0]}"</blockquote>
             <div class="quote-card-footer">
                 <span class="quote-attribution">— {randomQuote.value[1]}</span>
-                <button class="quote-refresh" onClick={next} title="New quote">
-                    <RefreshCcw size={11} />
+                <button class="quote-refresh" onClick={next} title="Next quote">
+                    <RefreshCcw size={12} />
                 </button>
             </div>
         </div>

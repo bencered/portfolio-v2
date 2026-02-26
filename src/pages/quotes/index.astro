@@ -13,28 +13,24 @@ const quotes = [
     ["When my bird was looking at my computer monitor, I thought, 'Woah, that bird has no idea what he's looking at.' And yet what does the bird do? Does he panic? No, he can't really panic, he just does the best he can. Is he able to live in a world where he's so ignorant? Well, he doesn't really have a choice. The bird is okay even though he doesn't understand the world. You're that bird looking at the monitor, and you're thinking to yourself, I can figure this out. Maybe you have some bird ideas. Maybe that's the best you can do.", "Terry Davis"],
     ["The longer you live, the more you fail. Failure is the mark of a life well lived. In turn, the only way to live without failure is to be of no use to anyone. Trust me, I've practiced.", "Wit"],
     ["The most important step a man can take. It's not the first one, is it? It's the next one. Always the next step, Dalinar.", "Dalinar Kholin"],
-    ["And so, does the destination matter? Or is it the path we take? I declare that no accomplishment has substance nearly as great as the road used to achieve it. We are not creatures of destinations. It is the journey that shapes us.", "Brandon Sanderson"],
+    ["And so, does the destination matter? Or is it the path we take? I declare that no accomplishment has substance nearly as great as the road used to achieve it.", "Brandon Sanderson"],
     ["My memory is to the world as a drawing is to the photograph. Imperfect. More perfect. We remember what we must, what we choose to, because it is more beautiful and real than the truth.", "Hadrian Marlowe"],
     ["The artist sees things not in terms of what is or might be, but in terms of what must be. Of what our world must become. This is why a portrait will—to the human observer—always defeat the photograph.", "Hadrian Marlowe"],
 ];
 ---
 
 <Layout title="Quotes — Bence R.">
-  <article class="article">
-    <header>
-      <h1 style="font-size:1.75rem; line-height:1.2; margin-bottom:0.5rem;">Favourite Quotes</h1>
-      <p class="tagline">Things that have stuck with me.</p>
-    </header>
+  <div class="section">
+    <h2 class="section-heading">Favourite Quotes</h2>
+    <p style="margin-bottom:1.5rem">Things that have stuck with me.</p>
 
-    <section>
-      {quotes.map((quote) => (
-        <div style="padding: 0.875rem 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
-          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(0,0,0,0.55); line-height:1.55; font-style:italic; margin-bottom:0.5rem;">
-            "{quote[0]}"
-          </p>
-          <p style="font-size:0.6875rem; color:rgba(0,0,0,0.35);">— {quote[1]}</p>
-        </div>
-      ))}
-    </section>
-  </article>
+    {quotes.map((quote) => (
+      <div style="padding: 1rem 0; border-bottom: 1px solid var(--border);">
+        <p style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text); line-height: 1.65; font-style: italic; margin-bottom: 0.5rem !important;">
+          "{quote[0]}"
+        </p>
+        <p style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 0 !important;">— {quote[1]}</p>
+      </div>
+    ))}
+  </div>
 </Layout>
