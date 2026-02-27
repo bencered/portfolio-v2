@@ -44,6 +44,17 @@ to quickly spin up these agents, and leverage its stellar context and understand
 of my repositories, without locking it up into a session. OpenClaw is also notoriously token-intensive,
 and delegating the work to a harness like OpenCode allows for a much more efficient use of tokens.
 
+The dream goal for Dom is that it'll be able to do something like so:
+1. Receive a written feature request from a user (via Posthog, Email, etc.)
+2. Assess the scope and requirements of the feature request, and plan out its implementation.
+3. Immediately spin up a background agent to create a pull request.
+4. Simultaneously start another background agent to draft tweets, a blog post, and update support pages.
+5. Run all outputs through a review, and keep iterating until they meet the defined quality standards.
+6. Once finished, notify the user and present everything to them to review and publish.
+
+In my eyes this is the kind of system that will power the next 10-person unicorn, and
+I'm excited to see where this technology will stand in a few months.
+
 I might open-source Dom at same point, and do a deep dive into its architecture, 
 but it's still very much so a work-in-progress with a lot of sharp edges. If you
 have any thoughts around background agents, or agents in general, [reach out](mailto:benceredmond@gmail.com)!

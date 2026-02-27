@@ -731,6 +731,8 @@ button { cursor: pointer; background: none; font-family: var(--font-primary); }
   padding-left: 1.25rem;
   margin-bottom: 1.25rem;
 }
+.prose-content ul { list-style-type: disc; }
+.prose-content ol { list-style-type: decimal; }
 .prose-content li { margin-bottom: 0.25rem; }
 .prose-content li::marker { color: rgba(255,255,255,0.25); }
 
