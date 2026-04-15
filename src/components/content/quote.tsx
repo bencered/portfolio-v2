@@ -12,10 +12,19 @@ function shuffle(): number[] {
 }
 
 export default function Quote() {
-    const [deck, setDeck] = useState(shuffle);
+    const [deck, setDeck] = useState<number[] | null>(null);
     const [pos, setPos] = useState(0);
 
+    const current = deck ? deck[pos] : 0;
+
     const next = useCallback(() => {
+        if (!deck) {
+            let newDeck: number[];
+            do { newDeck = shuffle(); } while (newDeck[0] === 0);
+            setDeck(newDeck);
+            setPos(0);
+            return;
+        }
         setPos(p => {
             const nextPos = p + 1;
             if (nextPos >= deck.length) {
@@ -31,7 +40,7 @@ export default function Quote() {
 
     return (
         <div class="quote-card">
-            <blockquote>"{quotes[deck[pos]][0]}"</blockquote>
+            <blockquote>"{quotes[current][0]}"</blockquote>
             <div class="quote-card-footer">
                 <button
                     class="quote-refresh"
@@ -40,7 +49,7 @@ export default function Quote() {
                 >
                     <RefreshCcw size={12} />
                 </button>
-                <span class="quote-attribution">— {quotes[deck[pos]][1]}</span>
+                <span class="quote-attribution">— {quotes[current][1]}</span>
             </div>
         </div>
     );
