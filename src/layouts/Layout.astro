@@ -40,6 +40,10 @@ const ogImage = `${siteUrl}/og.png?title=${encodeURIComponent(ogTitle)}&desc=${e
         <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={ogDescription} />
         <meta name="twitter:image" content={ogImage} />
+        <script is:inline>
+          const savedTheme = localStorage.getItem("theme");
+          document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
+        </script>
         <script defer src="https://umami.bence.red/script.js" data-website-id="e632ac30-04d3-42b5-9d01-8481db69b9a1"></script>
         <ClientRouter />
     </head>
@@ -54,5 +58,32 @@ const ogImage = `${siteUrl}/og.png?title=${encodeURIComponent(ogTitle)}&desc=${e
                 <slot />
             </main>
         </div>
+        <script>
+          function syncThemeToggle() {
+            const isLight = document.documentElement.dataset.theme === "light";
+
+            document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+              button.setAttribute("aria-pressed", String(isLight));
+              button.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} mode`);
+              button.setAttribute("title", `Switch to ${isLight ? "dark" : "light"} mode`);
+            });
+          }
+
+          function initThemeToggle() {
+            syncThemeToggle();
+          }
+
+          document.addEventListener("click", (event) => {
+            const toggle = (event.target as Element).closest<HTMLButtonElement>("[data-theme-toggle]");
+            if (!toggle) return;
+
+            const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+            document.documentElement.dataset.theme = nextTheme;
+            localStorage.setItem("theme", nextTheme);
+            syncThemeToggle();
+          });
+
+          document.addEventListener("astro:page-load", initThemeToggle);
+        </script>
     </body>
 </html>
