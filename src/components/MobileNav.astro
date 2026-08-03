@@ -16,10 +16,22 @@ function isActive(href: string): boolean {
 
 <header class="mobile-nav">
   <span class="mobile-nav-logo">Bence R.</span>
-  <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Menu">
-    <span></span>
-    <span></span>
-  </button>
+  <div class="mobile-nav-actions">
+    <button class="theme-toggle theme-toggle-compact" type="button" data-theme-toggle aria-pressed="false">
+      <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="3.5" />
+        <path d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4M18.7 18.7l-1.4-1.4M6.7 6.7L5.3 5.3" />
+      </svg>
+      <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.5 15.2A8.7 8.7 0 0 1 8.8 3.5 8.7 8.7 0 1 0 20.5 15.2Z" />
+      </svg>
+      <span class="theme-toggle-label">Theme</span>
+    </button>
+    <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </header>
 
 <div class="mobile-menu" id="mobile-menu">

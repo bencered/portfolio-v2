@@ -14,6 +14,11 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: [
+        "a-ta-01kz43ac1x96abfvs20tbvj08s-pqap2rrq234rojy403wtt767z.w.modal.host",
+      ],
+    },
   },
 });
 
